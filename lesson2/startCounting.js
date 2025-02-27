@@ -1,9 +1,15 @@
+let counterId;
+
 function startCounting() {
   let number = 1;
-  setInterval(() => {
+  counterId = setInterval(() => {
     console.log(number);
     number += 1;
   }, 1000);
 }
 
+function stopCounting() {
+  clearInterval(counterId);
+}
 startCounting();
+stopCounting();
