@@ -7,5 +7,12 @@ document.addEventListener('DOMContentLoaded', () => {
     event.preventDefault();
     let guess = ParseInt(input.value, 10);
     let message;
+    if (guess > answer) {
+      message = "Too high!";
+    } else if (guess < answer) {
+      message = "Too low!";
+    } else {
+      message = "Correct!";
+    }
   });
 });
