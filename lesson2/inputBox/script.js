@@ -9,9 +9,18 @@ document.addEventListener('DOMContentLoaded', () => {
     cursorInterval = setInterval(() => textField.classList.toggle('cursor'), 500);
   });
 
+  document.addEventListener('keydown', e => {
+    if (textField.classList.contains('focused')) {
+      let contentDiv = textField.querySelector(".content");
+      contentDiv.textContent += e.key;
+    }
+  });
+
   document.addEventListener('click', e => {
     clearInterval(cursorInterval);
-    textField.classList.remove('focused');
-    textField.classList.remove('cursor');
+    if (textField.classList.contains('focused')) {
+      textField.classList.remove('focused');
+      textField.classList.remove('cursor');
+    }
   });
 });
