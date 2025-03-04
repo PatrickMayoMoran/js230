@@ -12,7 +12,12 @@ document.addEventListener('DOMContentLoaded', () => {
   document.addEventListener('keydown', e => {
     if (textField.classList.contains('focused')) {
       let contentDiv = textField.querySelector(".content");
-      contentDiv.textContent += e.key;
+      let key = e.key;
+      if (key === 'Backspace') {
+        contentDiv.textContent = contentDiv.textContent.slice(0, contentDiv.textContent.length - 1);
+      } else if (key.length === 1) {
+        contentDiv.textContent += e.key;
+      }
     }
   });
 
