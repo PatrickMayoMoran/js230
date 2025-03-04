@@ -6,7 +6,9 @@ document.addEventListener('DOMContentLoaded', () => {
     e.stopPropagation();
     textField.classList.add('focused');
 
-    cursorInterval = setInterval(() => textField.classList.toggle('cursor'), 500);
+    if (!cursorInterval) {
+      cursorInterval = setInterval(() => textField.classList.toggle('cursor'), 500);
+    }
   });
 
   document.addEventListener('keydown', e => {
@@ -22,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   document.addEventListener('click', e => {
-    clearInterval(cursorInterval);
+    cursorInterval = clearInterval(cursorInterval);
     if (textField.classList.contains('focused')) {
       textField.classList.remove('focused');
       textField.classList.remove('cursor');
