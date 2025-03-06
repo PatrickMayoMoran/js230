@@ -4,4 +4,6 @@ function fetchUserData() {
   });
 }
 
-fetchUserData().catch((error) => console.log(error["error"])).finally(() => console.log("fetching complete"));
+fetchUserData()
+  .catch((error) => console.error(error.error))
+  .finally(() => console.log("fetching complete"));
