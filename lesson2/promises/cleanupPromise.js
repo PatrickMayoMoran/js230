@@ -1,5 +1,14 @@
-let cleanUp = new Promise((resolve) => {
-  resolve("Data download complete");
-});
+function operation() {
+  return new Promise((resolve) => {
+    console.log("Operation starting...");
+    setTimeout(() => {
+      resolve("Operation complete!");
+    }, 1000);
+  });
+}
 
-cleanUp.then(console.log).finally(console.log("Closing files and shutting down server"));
+operation()
+  .then(console.log)
+  .finally(() => {
+    console.log("cleaning up resources");
+  });
