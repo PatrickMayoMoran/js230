@@ -7,4 +7,4 @@ let flakyService = new Promise((resolve, reject) => {
   }
 });
 
-flakyService.then(console.log).catch(console.error);
+flakyService.then(console.log).catch((error) => console.log("An error occurred", error));
