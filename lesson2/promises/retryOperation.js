@@ -1,8 +1,19 @@
 function retryOperation(operationFunc) {
-  operationFunc()
-    .catch(() => operationFunc())
-    .catch(() => operationFunc())
-    .catch(() => console.log("operation failed"));
+  let attempts = 0;
+
+  function attempt() {
+    return operationFunc().catch((error) => {
+      if (attempts < 2) {
+        attempts++;
+        console.log(`Retry attempt #${attempts}`);
+        return attempt();
+      } else {
+        throw error;
+      }
+    });
+  }
+
+  return attempt().catch(() => console.log("Operation Failed"));
 }
 
 // Example usage:
