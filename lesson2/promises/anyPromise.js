@@ -12,5 +12,9 @@ function flakyService() {
 const services = [flakyService(), flakyService(), flakyService()];
 
 Promise.any(services)
-  .then(console.log)
-  .catch(() => console.log("All Promises failed"));
+  .then((result) => {
+    console.log(`First successful service result: ${result}`);
+  })
+  .catch((error) => 
+    console.error("All Promises failed", error)
+  );
