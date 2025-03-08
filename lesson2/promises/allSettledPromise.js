@@ -12,5 +12,15 @@ const services = [flakyService(), flakyService(), flakyService()];
 
 Promise.allSettled(services)
   .then((results) => {
-    results.forEach((result) => console.log(result));
+    results.forEach((result, index) => {
+      if (result.status === "fulfilled") {
+        console.log(
+          `Service ${index + 1} succeeded with message: ${result.value}`
+        );
+      } else {
+        console.log(
+          `Service ${index + 1} failed with message: ${result.reason}`
+        );
+      }
+    });
   });
