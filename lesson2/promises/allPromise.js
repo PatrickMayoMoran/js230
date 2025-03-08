@@ -20,4 +20,6 @@ function loadData() {
   });
 }
 
-Promise.all([flakyService(), flakyService(), loadData()]).then((results) => console.log(results)).catch((error) => console.error("One or more operations failed"));
+Promise.all([flakyService(), flakyService(), loadData()])
+  .then((results) => console.log(results))
+  .catch((error) => console.error("One or more operations failed"));
